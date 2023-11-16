@@ -5,7 +5,7 @@
 """
 
 if __name__ == "__main__":
-    import csv
+    import json
     import requests
     from sys import argv
 
@@ -20,8 +20,14 @@ if __name__ == "__main__":
     name = name.json()
     name = name[0]["username"]
     all_todos = all_todos.json()
-    file_name = "{}.csv".format(argv[1])
-    with open(file_name, 'w') as csv_file:
-        writer = csv.writer(csv_file, delimiter=',', quoting=csv.QUOTE_ALL)
-        for x in all_todos:
-            writer.writerow([argv[1], name, x['completed'], x['title']])
+    file_name = "{}.json".format(argv[1])
+
+    todo_list = {}
+    todo_list[argv[1]] = []
+    for x in all_todos:
+        todo_list[argv[1]].append(
+            {"task": x["title"], "completed": x["completed"], "username": name}
+        )
+
+    with open(file_name, 'w') as json_file:
+        json.dump(todo_list, json_file)

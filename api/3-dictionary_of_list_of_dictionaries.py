@@ -23,5 +23,5 @@ if __name__ == "__main__":
                 {"username": user["username"],
                     "task": x["title"], "completed": x["completed"]})
 
-    with open("todo_all_employees.com", 'w') as report_file:
+    with open("todo_all_employees.json", 'w') as report_file:
         json.dump(report, report_file)

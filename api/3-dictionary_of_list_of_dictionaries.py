@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-    Python script that gathers data from the
+    Python script that gathers ALL data from the
     provided REST API and writes to a json file
 """
 

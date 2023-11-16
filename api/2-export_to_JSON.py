@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """
     Python script that gathers data from the
-    provided REST API and writes to a csv file
+    provided REST API and writes to a json file
 """
 
 if __name__ == "__main__":

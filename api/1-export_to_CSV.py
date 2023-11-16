@@ -8,13 +8,14 @@ if __name__ == "__main__":
     import csv
     import requests
     from sys import argv
+
     if len(argv) < 2:
         exit()
-    
+
     name = requests.get("https://jsonplaceholder.typicode.com/users?id={}"
                         .format(argv[1]))
     name = name.json()
-    name = name[0]["name"]
+    name = name[0]["username"]
 
     all_todo = requests.get(
         "https://jsonplaceholder.typicode.com/todos?userId={}".format(argv[1]))

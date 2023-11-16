@@ -12,17 +12,16 @@ if __name__ == "__main__":
     if len(argv) < 2:
         exit()
 
-    name = requests.get("https://jsonplaceholder.typicode.com/users?id={}"
-                        .format(argv[1]))
+    all_todos = requests.get(
+        "https://jsonplaceholder.typicode.com/todos?userId={}"
+        .format(argv[1]))
+    name = requests.get(
+        "https://jsonplaceholder.typicode.com/users?id={}".format(argv[1]))
     name = name.json()
     name = name[0]["username"]
-
-    all_todo = requests.get(
-        "https://jsonplaceholder.typicode.com/todos?userId={}".format(argv[1]))
-    all_todo = all_todo.json()
+    all_todos = all_todos.json()
     file_name = "{}.csv".format(argv[1])
-
     with open(file_name, 'w') as csv_file:
-        writer = csv.writer(csv_file, delimiter=",", quoting=csv.QUOTE_ALL)
-        for x in all_todo:
+        writer = csv.writer(csv_file, delimiter=',', quoting=csv.QUOTE_ALL)
+        for x in all_todos:
             writer.writerow([argv[1], name, x['completed'], x['title']])

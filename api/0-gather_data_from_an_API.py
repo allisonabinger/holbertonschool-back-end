@@ -25,7 +25,7 @@ if __name__ == "__main__":
     completed_list = []
     for n in completed:
         completed_list.append("\t {}".format(n["title"]))
-    print("Employee {} is done with tasks ({}/{}):".format(
+    print("Employee {} is done with tasks({}/{}):".format(
         name, len(completed), remaining))
     for x in completed_list:
         print(x)
